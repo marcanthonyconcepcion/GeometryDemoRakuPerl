@@ -44,7 +44,7 @@ class Triangle does TwoDimensionalShape is export
     has $.b;
     has $.c;
     method new ($a, $b, $c) {
-        if !($a + $b > $c && $a + $c > $b && $a + $c > $b) {
+        if !($a + $b > $c && $a + $c > $b && $b + $c > $a) {
             InvalidTriangleError.new.throw;
         }
         self.bless(:$a, :$b, :$c);

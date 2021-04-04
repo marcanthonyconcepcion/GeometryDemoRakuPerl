@@ -46,6 +46,26 @@ subtest {
     throws-like {
         Triangle.new($first_side, $second_side, $third_side);
     }, InvalidTriangleError;
-}, "Error handling Invalid Triangle";
+}, "Error handling Invalid Triangle first+second<=third";
+
+subtest {
+    my $first_side  = 10;
+    my $second_side = 31;
+    my $third_side  = 20;
+
+    throws-like {
+        Triangle.new($first_side, $second_side, $third_side);
+    }, InvalidTriangleError;
+}, "Error handling Invalid Triangle first+third<=second";
+
+subtest {
+    my $first_side  = 40;
+    my $second_side = 11;
+    my $third_side  = 22;
+
+    throws-like {
+        Triangle.new($first_side, $second_side, $third_side);
+    }, InvalidTriangleError;
+}, "Error handling Invalid Triangle second+third<=first";
 
 done-testing;
